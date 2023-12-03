@@ -13,7 +13,10 @@
             <h5 class="card-title">タイトル: {{ object.title }}</h5>
             <p class="card-text">投稿者: {{ object.author }}</p>
             <p class="card-text">投稿日: {{ object.post_date|date:"o/n/j" }}</p>
+            <p class="card-text">本文: {{ object.content }}</p>
+            {% if object.sns_image %}
             <img src="{{ object.sns_image.url }}" class="img-fluid mb-3" alt="SNS Image">
+            {% endif %}
             <div class="d-flex justify-content-between">
                 <div class="btn-group">
                     <a class="btn btn-outline-primary" href="{% url 'good' object.pk %}" role="button"><i class="bi bi-heart"></i> いいねする</a>

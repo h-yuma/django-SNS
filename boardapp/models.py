@@ -5,7 +5,7 @@ class BoardModel(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     author = models.CharField(max_length=50)
-    sns_image = models.ImageField(upload_to='')
+    sns_image = models.ImageField(upload_to='', null=True, blank=True)
     post_date = models.DateTimeField(auto_now_add=True)
     good = models.IntegerField(null=True, blank=True, default=1)
     read = models.IntegerField(null=True, blank=True, default=1)
