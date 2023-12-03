@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    <h3>Detail Page</h3>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">タイトル: {{ object.title }}</h5>
+            <p class="card-text">投稿者: {{ object.author }}</p>
+            <p class="card-text">投稿日: {{ object.post_date|date:"o/n/j" }}</p>
+            <img src="{{ object.sns_image.url }}" class="img-fluid mb-3" alt="SNS Image">
+            <div class="d-flex justify-content-between">
+                <div class="btn-group">
+                    <a class="btn btn-outline-primary" href="{% url 'good' object.pk %}" role="button"><i class="bi bi-heart"></i> いいねする</a>
+                    <a class="btn btn-outline-primary" href="{% url 'read' object.pk %}" role="button"><i class="bi bi-eye"></i> 既読にする</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

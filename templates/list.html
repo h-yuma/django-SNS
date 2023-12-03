@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    <h3>社内SNS</h3>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <a class="btn btn-primary mb-3" href="{% url 'create' %}"><i class="bi bi-pencil"></i> 投稿する</a>
+    <a class="btn btn-primary mb-3" href="{% url 'user' user.username %}"><i class="bi bi-pencil"></i> ユーザー情報</a>
+    {% for item in object_list %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'detail' item.pk %}">{{ item.title }}</a></h5>
+            <p class="card-text">投稿者: {{ item.author }}</p>
+            <p class="card-text">投稿日: {{ item.post_date|date:"o/n/j" }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a class="btn btn-outline-primary" href="#" role="button"><i class="bi bi-heart"></i> いいね {{ item.good }} 件</a>
+                    <a class="btn btn-outline-primary" href="#" role="button"><i class="bi bi-eye"></i> 既読 {{ item.read }} 人</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+</div>
+
+{% endblock content %}
