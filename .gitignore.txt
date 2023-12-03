@@ -1,2 +1,0 @@
-db.splite3
-media/
