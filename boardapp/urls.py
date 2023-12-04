@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import signupfunc, loginfunc, listfunc, logoutfunc, detailfunc, goodfunc, readfunc, BoardCreate, userfunc
+from .views import signupfunc, loginfunc, listfunc, logoutfunc, detailfunc, goodfunc, readfunc, BoardCreate, userfunc, deletecheckfunc, deletefunc
 
 urlpatterns = [
     path('signup/', signupfunc, name='signup'),
@@ -12,4 +12,7 @@ urlpatterns = [
     path('read/<int:pk>', readfunc, name='read'),
     path('create/', BoardCreate.as_view(), name='create'),
     path('user/<str:username>', userfunc, name='user'),
+    path('deletecheck/<int:pk>', deletecheckfunc, name='deletecheck'),
+    path('delete/<int:pk>', deletefunc, name='delete')
+    
 ]

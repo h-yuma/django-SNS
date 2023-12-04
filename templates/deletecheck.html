@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">投稿の詳細</h5>
+            <h6 class="card-subtitle mb-2 text-muted">タイトル: {{ object.title }}</h6>
+            <p class="card-text">投稿者: {{ object.author }}</p>
+            <p class="card-text">投稿日: {{ object.post_date|date:"o/n/j" }}</p>
+            <p class="card-text">本文: {{ object.content }}</p>
+            {% if object.sns_image %}
+                <img src="{{ object.sns_image.url }}" class="img-fluid mb-3" alt="SNS Image">
+            {% endif %}
+            <div class="d-flex justify-content-between">
+                <div class="btn-group">
+                    <a class="btn btn-outline-primary" href="{% url 'good' object.pk %}" role="button"><i class="bi bi-heart"></i> いいねする</a>
+                    <a class="btn btn-outline-primary" href="{% url 'read' object.pk %}" role="button"><i class="bi bi-eye"></i> 既読にする</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <h5>以上の投稿を本当に削除しますか？</h5>
+        <div class="d-flex justify-content-start">
+            <a class="btn btn-danger" href="{% url 'delete' object.pk %}"><i class="bi bi-trash"></i> はい</a>
+            <a class="btn btn-secondary mr-2" href="{% url 'list' %}"><i class="bi bi-arrow-left"></i> いいえ</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

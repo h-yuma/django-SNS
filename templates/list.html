@@ -11,6 +11,7 @@
     <a class="btn btn-primary mb-3" href="{% url 'create' %}"><i class="bi bi-pencil"></i> 投稿する</a>
     <a class="btn btn-primary mb-3" href="{% url 'user' user.username %}"><i class="bi bi-pencil"></i> ユーザー情報</a>
     {% for item in object_list %}
+    {% if item.delete == False %}
     <div class="card mb-3">
         <div class="card-body">
             <h5 class="card-title"><a href="{% url 'detail' item.pk %}">{{ item.title }}</a></h5>
@@ -24,6 +25,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
     <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
 </div>

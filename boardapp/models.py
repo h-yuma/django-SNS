@@ -10,3 +10,4 @@ class BoardModel(models.Model):
     good = models.IntegerField(null=True, blank=True, default=1)
     read = models.IntegerField(null=True, blank=True, default=1)
     readtext = models.TextField(null=True, blank=True)
+    delete = models.BooleanField(default=False)

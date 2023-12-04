@@ -74,6 +74,17 @@ def userfunc(request, username):
     object_list = BoardModel.objects.filter(author=user)
     return render(request, 'user.html', {'object_list':object_list, 'user':user})
 
+@login_required
+def deletecheckfunc(request, pk):
+    object = get_object_or_404(BoardModel, pk=pk)
+    return render(request, 'deletecheck.html', {'object':object})
+
+@login_required
+def deletefunc(request, pk):
+    object = get_object_or_404(BoardModel, pk=pk)
+    object.delete = True
+    object.save()
+    return redirect('list')
 
 class BoardCreate(CreateView):
     template_name = 'create.html'
